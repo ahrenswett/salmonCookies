@@ -62,26 +62,24 @@ var pike = salmonCookieStores[0];
 //returns a list of estimated random customers pHR Per store that salmon cookies wants to open.
 function getEstRndm(){
     for(i = 0; i< salmonCookieStores.length; i++){
+    
         // creates an array to store estimate of people
         salmonCookieStores[i].rndArrayPeople = [];
-        // creates an array to store estimate of cookies
+        // creates an array to store estimate of cookies and calculates random cookies perhour.
         salmonCookieStores[i].averageCookies = [];
         
 
 
         for(j = 0; j < opHours.length; j++){
         // stores estimated customers perhour in an array on each store object
-        salmonCookieStores[i].rndArrayPeople.push(salmonCookieStores[i].customersPerHour(salmonCookieStores[i].min, salmonCookieStores[i].max));
-         
-        
-        
-        
-        // stores estimated customers perhour in an array on each store object
-        salmonCookieStores[i].averageCookies.push(salmonCookieStores[i].customersPerHour(salmonCookieStores[i].min, salmonCookieStores[i].max));
-        console.log(`im loop # ${j}`)
+        salmonCookieStores[i].rndArrayPeople.push (salmonCookieStores[i].customersPerHour(salmonCookieStores[i].min, salmonCookieStores[i].max));
+        salmonCookieStores[i].averageCookies.push (salmonCookieStores[i].rndArrayPeople[j] * salmonCookieStores[i].aveCookieSalePH);
+    
+    
+    }
 
-         
-        }
+        
+        
     }
 }
 
@@ -89,5 +87,6 @@ function getEstRndm(){
 
 getEstRndm();
 
-console.log(salmonCookieStores[0].customersPerHour(salmonCookieStores[0].min, salmonCookieStores[0].max))
-console.log(pike.rndArrayPeople)
+console.log(salmonCookieStores[0].customersPerHour(salmonCookieStores[0].min, salmonCookieStores[0].max));
+console.log(pike.rndArrayPeople);
+console.log(pike.averageCookies);
