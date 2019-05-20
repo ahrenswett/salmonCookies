@@ -100,32 +100,16 @@ join();
 //creates the table head
 for(var i = 0; i < salmonCookieStores.length; i++){
   var infoTable = document.getElementById('infoTable');
-  var tableHead = document.createElement('th');
+  var tableHead = document.createElement('ul');
   tableHead.textContent = salmonCookieStores[i].store;
   infoTable.appendChild(tableHead);
 
   for(var j = 0; j < salmonCookieStores[i].htmlTimeTable.length; j++){
-    var hours = document.createElement('tr');
+    var hours = document.createElement('li');
     hours.textContent = salmonCookieStores[i].htmlTimeTable[j];
     tableHead.appendChild(hours);
   }
-  var totals = document.createElement('tr');
-  totals.textContent = `Total For the Day: ${sumUpArray(salmonCookieStores[i].averageCookies)}`;
+  var totals = document.createElement('li');
+  totals.textContent = `Total : ${sumUpArray(salmonCookieStores[i].averageCookies)}`;
   tableHead.appendChild(totals);
 }
-
-console.log(Pike.htmlTimeTable);
-console.log(salmonCookieStores[0].customersPerHour(salmonCookieStores[0].min, salmonCookieStores[0].max));
-console.log(Pike.rndArrayPeople);
-console.log(Pike.averageCookies);
-
-
-
-
-// window.onload = function(){
-// //displays store names on sales.html
-//   for(var i = 0; i < salmonCookieStores.length; i++){
-//     // var store = salmonCookieStores[i].store;
-//     document.getElementById(salmonCookieStores[i].store).innerHTML('Pike');
-//   }
-// };

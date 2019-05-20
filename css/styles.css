@@ -1,4 +1,29 @@
-table, th, td  {
+main{
+    background-color: black;
+}
+
+ul{
+    float: left;
+    font-family: fantasy;
+    font-size: 1em;
+    padding: 2em;
+    border: 1em solid black;
+    background-color: salmon;
+}
+    
+    
+li{
+    font-size: 1em;
+    line-height: 2em;
+    padding: .25em;
+    border: 1px solid black;
+    background-color: rgb(224, 45, 99);
+}
+
+
+
+
+/* table, th, td  {
     padding: 2em;
     border: 1px solid black;
     background-color: salmon
@@ -9,4 +34,4 @@ table, th, td  {
     padding: .25em;
     border: 1px solid black;
     background-color: rgb(224, 45, 99);
-  }
+  } */
