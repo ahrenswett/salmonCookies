@@ -7,7 +7,7 @@ function getRandomInt(min, max){
 //returns a list of estimated random customers pHR Per store that salmon cookies wants to open.
 //it also returns the estimated average of cookies needed per business hour
 function getEstRndm(store){
-
+  store.customersPerHour = getRandomInt;
   // creates an array to store estimate of people
   store.rndArrayPeople = [];
 
@@ -31,21 +31,20 @@ function getEstRndm(store){
     store.cookiesPerHour.push(`${opHours[j-1]} to ${opHours[j]} : ${store.averageCookies[j-1]} cookies`);
   }
 
-
   //Sums up total of estimated cookies per day and creates a new sum array on each store.
   store.sum = 0;
   for(var j = 0; j < store.averageCookies.length; j++){
     store.sum = store.sum + store.averageCookies[j];
   }
-
 }
 
-//creates the list of cookies per hour at each store
+//creates the list of cookies per hour at each store and displays on HTLM
 function toList(store)
 {
+  
   var infoTable = document.getElementById('infoTable');
   var tableHead = document.createElement('ul');
-  tableHead.textContent = store.location;
+  tableHead.textContent = store.store;
   infoTable.appendChild(tableHead);
 
   for(var j = 0; j < store.cookiesPerHour.length; j++){
@@ -59,61 +58,48 @@ function toList(store)
 }
 
 function postData(store){
-
   getEstRndm(store);
   toList(store);
-
 }
 
-/////////////////////////////////*********   Store Objects   **********////////////////////////////////
-var pike = {
-  location: 'Pike',
-  min: 23,
-  max: 65,
-  aveCookieSalePH: 6.3,
-  customersPerHour: getRandomInt,
-};
-
-var seaTac = {
-  location: 'SeaTac',
-  min: 3,
-  max: 24,
-  aveCookieSalePH: 1.2,
-  customersPerHour: getRandomInt,
-};
-
-var seaCenter = {
-  location: 'Seattle Center',
-  min: 11,
-  max: 38,
-  aveCookieSalePH: 3.7,
-  customersPerHour: getRandomInt,
-};
-
-var capHill = {
-  location: 'Capitol Hill',
-  min: 20,
-  max: 38,
-  aveCookieSalePH: 2.3,
-  customersPerHour: getRandomInt,
-};
-
-var alki = {
-  location: 'Alki',
-  min: 2,    
-  max: 16,
-  aveCookieSalePH: 4.6,
-  customersPerHour: getRandomInt,
-};
-
-
+//PETES SALMON COOKIES HOURS OF OPERATION
 var opHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 
+/////////////////////////////////*********   Store Objects   **********////////////////////////////////
+var listOfStoresArray = [];
+
+function Store(locationString,minCustPerHour,maxCustPerHour,aveCookieSoldPerHour){
+  this.store = locationString;
+  this.min = minCustPerHour;
+  this.max = maxCustPerHour;
+  this.aveCookieSalePH = aveCookieSoldPerHour;
+}
+
+//console logs the store is allive and pushes store to an array
+Store.prototype.sellingCookies = function(){
+  listOfStoresArray.push(this);
+  console.log(`${this.store} says Im alive and selling cookies!!!`);
+};
+
+///Creating store instances.
+var pike = new Store('Pike', 23, 56, 6.3);
+pike.sellingCookies();
+
+var seaTac = new Store('SeaTac', 3, 24, 1.2);
+seaTac.sellingCookies();
+
+var seaCenter = new Store('Seattle Center', 23, 56, 6.3);
+seaCenter.sellingCookies();
+
+var capHill = new Store('Capitol Hill', 23, 56, 6.3);
+capHill.sellingCookies();
+
+var alki = new Store('Alki', 23, 56, 6.3);
+alki.sellingCookies();
+
+//Calls the post data function on all stores
+for(var i = 0; i < listOfStoresArray.length; i++){
+  postData(listOfStoresArray[i]);
+}
 
 
-
-postData(pike);
-postData(seaTac);
-postData(seaCenter);
-postData(capHill);
-postData(alki);
