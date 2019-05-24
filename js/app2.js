@@ -46,7 +46,14 @@ function getEstRndm(store){
   }
 }
 
-
+function findLongestArray(array, propertyString){
+  for(var x = 0; x < array.length; x++){
+    if(longestArrayLength < array[x][propertyString].length){
+      console.log(array[x][propertyString].length);
+      longestArrayLength = array[x][propertyString].length;
+    }
+  }
+}
 
 
 //PETES SALMON COOKIES HOURS OF OPERATION
@@ -60,6 +67,7 @@ for(var j = 1; j < opHours.length; j++){
 
 /////////////////////////////////*********   Store Objects   **********////////////////////////////////
 var listOfStoresArray = [];
+var longestArrayLength = 0;
 var infoTable = document.getElementById('infoTable');
 
 ///Creating store instances.
@@ -80,13 +88,11 @@ alki.sellingCookies();
 
 console.log(listOfStoresArray);
 
+// calls a function that stors the length of the longest array in a variable called longestArrayLength
+findLongestArray(listOfStoresArray,'averageCookies');
+
+
 //creates the list of cookies per hour at each store and displays on HTML
-
-// create a tHead that contains all 
-//create a table row table head that shows hours of operation and one blank cell to the left
-// create a row that prints name of store, cookie estimate and totals of an element
-
-
 // Table Body
 var tbEl = document.createElement('tbody');
 infoTable.appendChild(tbEl);
@@ -131,46 +137,25 @@ for(var x = 0; x < listOfStoresArray.length + 1; x++){
     cell = document.createElement('td');
     cell.textContent = listOfStoresArray[x].sum;
     row.appendChild(cell);
-}
-}
-// else{
-    // row = document.createElement('tr');
-    // tbEl.appendChild(row);
+  }else{
+    // make a new row
+    row = document.createElement('tr');
+    tbEl.appendChild(row);
 
-//     var cell = document.createElement('td');
-//     cell.textContent = 'Total Cookies Per Hour';
-//     row.appendChild(cell);
+    // Total Cookies Per Hour cell
+    var cell = document.createElement('td');
+    cell.textContent = 'Total Cookies Per Hour';
+    row.appendChild(cell);
 
-//     //fills in cookies per hour 
-//     for(var y = 0; y < listOfStoresArray[0].averageCookies.length; y++){
-//       cell = document.createElement('td');
-//       cell.textContent = listOfStoresArray[x].averageCookies[y];
-//       row.appendChild(cell);
-//     }
-//     //fills in total cookies for the day
-//     cell = document.createElement('td');
-//     cell.textContent = listOfStoresArray[x].sum;
-//     row.appendChild(cell);
-//   }
-var longestArrayLength = 0
-// for(var x = 0; x < listOfStoresArray.length; x++){
-//   if(longestArrayLength < listOfStoresArray[x].averageCookies.length){
-//     console.log(listOfStoresArray[x].averageCookies.length);
-//     longestArrayLength = listOfStoresArray[x].averageCookies.length;
-//   }
-  function findLongestArray(array, array2){
-    for(var x = 0; x < array.length; x++){
-      if(longestArrayLength < array[x][array2].length){
-        console.log(array[x][array2].length);
-        longestArrayLength = array[x][array2].length;
-      }
+    //fills Total Cookies Per Hour
+    for(var y = 0; y < longestArrayLength; y++){
+      cell = document.createElement('td');
+      cell.textContent = listOfStoresArray[x].averageCookies[y];
+      row.appendChild(cell);
     }
+    //fills in total cookies for the day
+    cell = document.createElement('td');
+    cell.textContent = listOfStoresArray[x].sum;
+    row.appendChild(cell);
+  }
 }
-        findLongestArray(listOfStoresArray, 'averageCookies');
-
-console.log(listOfStoresArray[0].averageCookies);
-
-
-
-console.log(longestArrayLength);
-    
