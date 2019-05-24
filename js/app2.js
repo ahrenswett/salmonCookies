@@ -46,6 +46,18 @@ function getEstRndm(store){
   }
 }
 
+function toatsCookies(){
+  for(var x = 0; x < longestArrayLength; x++ ){
+    var toatsCookiesPerH = 0;
+    for(var y = 0; y < listOfStoresArray.length; y++){
+      toatsCookiesPerH = toatsCookiesPerH + listOfStoresArray[y].averageCookies[x];
+      console.log(`${toatsCookiesPerH} toatsCookiesPH`);
+    }
+    totalCookiesPerHourArray.push(toatsCookiesPerH);
+    console.log(totalCookiesPerHourArray);
+  }
+}
+
 function findLongestArray(array, propertyString){
   for(var x = 0; x < array.length; x++){
     if(longestArrayLength < array[x][propertyString].length){
@@ -58,8 +70,8 @@ function findLongestArray(array, propertyString){
 
 //PETES SALMON COOKIES HOURS OF OPERATION
 var opHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
-//Creates an array that displays hours 6-7, 7-8, 8-9 and so on for the durayion of operationl hours used to diplay in table"
 
+//Creates an array that displays hours 6-7, 7-8, 8-9 and so on for the durayion of operationl hours used to diplay in table"
 var hours =[''];
 for(var j = 1; j < opHours.length; j++){
   hours.push(`${opHours[j-1]}-${opHours[j]}`);
@@ -68,6 +80,7 @@ for(var j = 1; j < opHours.length; j++){
 /////////////////////////////////*********   Store Objects   **********////////////////////////////////
 var listOfStoresArray = [];
 var longestArrayLength = 0;
+var totalCookiesPerHourArray = [];
 var infoTable = document.getElementById('infoTable');
 
 ///Creating store instances.
@@ -90,7 +103,7 @@ console.log(listOfStoresArray);
 
 // calls a function that stors the length of the longest array in a variable called longestArrayLength
 findLongestArray(listOfStoresArray,'averageCookies');
-
+toatsCookies();
 
 //creates the list of cookies per hour at each store and displays on HTML
 // Table Body
@@ -150,12 +163,9 @@ for(var x = 0; x < listOfStoresArray.length + 1; x++){
     //fills Total Cookies Per Hour
     for(var y = 0; y < longestArrayLength; y++){
       cell = document.createElement('td');
-      cell.textContent = listOfStoresArray[x].averageCookies[y];
+      cell.textContent = totalCookiesPerHourArray[y];
+      console.log(`${totalCookiesPerHourArray[y]} Iam toats`)
       row.appendChild(cell);
     }
-    //fills in total cookies for the day
-    cell = document.createElement('td');
-    cell.textContent = listOfStoresArray[x].sum;
-    row.appendChild(cell);
   }
 }
