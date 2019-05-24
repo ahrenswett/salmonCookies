@@ -31,17 +31,18 @@ function getEstRndm(store){
     store.cookiesPerHour.push(`${opHours[j-1]} to ${opHours[j]} : ${store.averageCookies[j-1]} cookies`);
   }
 
+
   //Sums up total of estimated cookies per day and creates a new sum array on each store.
   store.sum = 0;
   for(var j = 0; j < store.averageCookies.length; j++){
     store.sum = store.sum + store.averageCookies[j];
   }
+
 }
 
 //creates the list of cookies per hour at each store and displays on HTLM
 function toList(store)
 {
-  
   var infoTable = document.getElementById('infoTable');
   var tableHead = document.createElement('ul');
   tableHead.textContent = store.store;
@@ -62,8 +63,10 @@ function postData(store){
   toList(store);
 }
 
+
 //PETES SALMON COOKIES HOURS OF OPERATION
 var opHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
+
 
 /////////////////////////////////*********   Store Objects   **********////////////////////////////////
 var listOfStoresArray = [];
