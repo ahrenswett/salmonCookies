@@ -3,6 +3,7 @@ function getRandomInt(min, max){
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
+
 function Store(locationString,minCustPerHour,maxCustPerHour,aveCookieSoldPerHour){
   this.store = locationString;
   this.min = minCustPerHour;
@@ -38,28 +39,26 @@ function getEstRndm(store){
     store.averageCookies.push ( Math.round((store.rndArrayPeople[j-1] * store.aveCookieSalePH)));
   }
 
-  
-
   //Sums up total of estimated cookies per day and creates a new sum array on each store.
   store.sum = 0;
   for(var j = 0; j < store.averageCookies.length; j++){
     store.sum = store.sum + store.averageCookies[j];
   }
 }
-  
+
 
 
 
 //PETES SALMON COOKIES HOURS OF OPERATION
 var opHours = ['6am','7am','8am','9am','10am','11am','12pm','1pm','2pm','3pm','4pm','5pm','6pm','7pm','8pm'];
 //Creates an array that displays hours 6-7, 7-8, 8-9 and so on for the durayion of operationl hours used to diplay in table"
+
 var hours =[''];
 for(var j = 1; j < opHours.length; j++){
   hours.push(`${opHours[j-1]}-${opHours[j]}`);
 }
+
 /////////////////////////////////*********   Store Objects   **********////////////////////////////////
-
-
 var listOfStoresArray = [];
 var infoTable = document.getElementById('infoTable');
 
@@ -111,31 +110,67 @@ for(var x = 0; x< hours.length + 1; x++){
 }
 
 
-
-
-// Table Row 2
+// Table Rows with data
 for(var x = 0; x < listOfStoresArray.length + 1; x++){
-  row = document.createElement('tr');
-  tbEl.appendChild(row);
+  if(x<listOfStoresArray.length){
+    row = document.createElement('tr');
+    tbEl.appendChild(row);
 
-  var cell = document.createElement('td');
-  cell.textContent = listOfStoresArray[x].store;
-  row.appendChild(cell);
-
-  for(var y = 0; y < listOfStoresArray[0].averageCookies.length; y++){
-    cell = document.createElement('td');
-    cell.textContent = listOfStoresArray[x].averageCookies[y];
+    // writes store name in left most cell
+    var cell = document.createElement('td');
+    cell.textContent = listOfStoresArray[x].store;
     row.appendChild(cell);
-  }
-  
-  cell = document.createElement('td');
-  cell.textContent = listOfStoresArray[x].sum;
-  row.appendChild(cell);
+
+    //fills in cookies per hour 
+    for(var y = 0; y < listOfStoresArray[0].averageCookies.length; y++){
+      cell = document.createElement('td');
+      cell.textContent = listOfStoresArray[x].averageCookies[y];
+      row.appendChild(cell);
+    }
+    //fills in total cookies for the day
+    cell = document.createElement('td');
+    cell.textContent = listOfStoresArray[x].sum;
+    row.appendChild(cell);
 }
+}
+// else{
+    // row = document.createElement('tr');
+    // tbEl.appendChild(row);
+
+//     var cell = document.createElement('td');
+//     cell.textContent = 'Total Cookies Per Hour';
+//     row.appendChild(cell);
+
+//     //fills in cookies per hour 
+//     for(var y = 0; y < listOfStoresArray[0].averageCookies.length; y++){
+//       cell = document.createElement('td');
+//       cell.textContent = listOfStoresArray[x].averageCookies[y];
+//       row.appendChild(cell);
+//     }
+//     //fills in total cookies for the day
+//     cell = document.createElement('td');
+//     cell.textContent = listOfStoresArray[x].sum;
+//     row.appendChild(cell);
+//   }
+var longestArrayLength = 0
+// for(var x = 0; x < listOfStoresArray.length; x++){
+//   if(longestArrayLength < listOfStoresArray[x].averageCookies.length){
+//     console.log(listOfStoresArray[x].averageCookies.length);
+//     longestArrayLength = listOfStoresArray[x].averageCookies.length;
+//   }
+  function findLongestArray(array, array2){
+    for(var x = 0; x < array.length; x++){
+      if(longestArrayLength < array[x][array2].length){
+        console.log(array[x][array2].length);
+        longestArrayLength = array[x][array2].length;
+      }
+    }
+}
+        findLongestArray(listOfStoresArray, 'averageCookies');
 
 console.log(listOfStoresArray[0].averageCookies);
 
 
 
-// create hours Headers
-// displ
+console.log(longestArrayLength);
+    
