@@ -126,16 +126,14 @@ console.log(listOfStoresArray);
 findLongestArray(listOfStoresArray,'averageCookies');
 toatsCookies();
 
-//creates the list of cookies per hour at each store and displays on HTML
-// Table Body
-var tbEl = document.createElement('tbody');
+// Creates Table Head
+var tbEl = document.createElement('thead');
 infoTable.appendChild(tbEl);
 
-// Table Row 1
 var row = document.createElement('tr');
 tbEl.appendChild(row);
 
-//Table Head
+//Table Head Elements display hours of operation.
 for(var x = 0; x< hours.length + 1; x++){
   if(x< hours.length){
     var thEl = document.createElement('th');
@@ -149,6 +147,14 @@ for(var x = 0; x< hours.length + 1; x++){
   }
 }
 
+//creates the list of cookies per hour at each store and displays on HTML
+// Table Body
+var tbEl = document.createElement('tbody');
+infoTable.appendChild(tbEl);
+
+// Table Row 1
+var row = document.createElement('tr');
+tbEl.appendChild(row);
 
 // Table Rows with data
 for(var x = 0; x < listOfStoresArray.length + 1; x++){
@@ -171,8 +177,13 @@ for(var x = 0; x < listOfStoresArray.length + 1; x++){
     cell = document.createElement('td');
     cell.textContent = listOfStoresArray[x].sum;
     row.appendChild(cell);
+
+
   }else{
-    // make a new row
+    // makes a footer
+    var tFoot = document.createElement('tfoot');
+    tbEl.appendChild(tFoot);
+
     row = document.createElement('tr');
     tbEl.appendChild(row);
 
