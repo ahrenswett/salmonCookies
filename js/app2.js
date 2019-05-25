@@ -47,21 +47,42 @@ function getEstRndm(store){
 }
 
 function toatsCookies(){
-  for(var x = 0; x < longestArrayLength; x++ ){
+  console.log(`Begin the Totes`);
+  for(var x = 0; x < longestArrayLength + 1; x++ ){//14
+
+    console.log(`interupting llama!`);
+    
     var toatsCookiesPerH = 0;
-    for(var y = 0; y < listOfStoresArray.length; y++){
-      toatsCookiesPerH = toatsCookiesPerH + listOfStoresArray[y].averageCookies[x];
-      console.log(`${toatsCookiesPerH} toatsCookiesPH`);
+
+
+    if(x < longestArrayLength){//14
+
+      for(var y = 0; y < listOfStoresArray.length; y++){//5
+        console.log(`Totes if loop ${y}`);
+        toatsCookiesPerH = toatsCookiesPerH + listOfStoresArray[y].averageCookies[x];
+        console.log(`${toatsCookiesPerH} toatsCookiesPH`);
+        console.log(`${longestArrayLength} longestArray`);
+      }
+    }else{
+      console.log(`Elsa`);
+      toatsCookiesPerH = 0;
+      for(var y = 0; y < totalCookiesPerHourArray.length; y++){
+        toatsCookiesPerH = toatsCookiesPerH + totalCookiesPerHourArray[y];
+        console.log(`total cookies ${toatsCookiesPerH}`);
+      }
     }
     totalCookiesPerHourArray.push(toatsCookiesPerH);
-    console.log(totalCookiesPerHourArray);
+    console.log(`${totalCookiesPerHourArray} Iam Array`);
   }
 }
+
+
+
+
 
 function findLongestArray(array, propertyString){
   for(var x = 0; x < array.length; x++){
     if(longestArrayLength < array[x][propertyString].length){
-      console.log(array[x][propertyString].length);
       longestArrayLength = array[x][propertyString].length;
     }
   }
@@ -161,7 +182,7 @@ for(var x = 0; x < listOfStoresArray.length + 1; x++){
     row.appendChild(cell);
 
     //fills Total Cookies Per Hour
-    for(var y = 0; y < longestArrayLength; y++){
+    for(var y = 0; y < longestArrayLength + 1; y++){
       cell = document.createElement('td');
       cell.textContent = totalCookiesPerHourArray[y];
       console.log(`${totalCookiesPerHourArray[y]} Iam toats`)
@@ -169,3 +190,11 @@ for(var x = 0; x < listOfStoresArray.length + 1; x++){
     }
   }
 }
+
+
+
+
+
+
+
+
