@@ -7,15 +7,36 @@
     </head>
 
     <body>
-        <header>
-        </header>
 
+        <header>
+            ALL THE COOKIEEEESSSSSSS!
+        </header>
+        <section id="storeCreatorForm">
+            <h2>Please Enter information for your new store!</h2>
+            <form id='form'>
+                <fieldset>
+                    <label>Please enter name of store</label>
+                    <input id="store-Name" type="text" name="newStore" required/>
+                    <br>
+                    <label>Please enter minimum customers pHR</label>
+                    <input id="storeMin" type="text" name="min" required/>
+                    <br>
+                    <label>Please enter maximum customers pHR</label>
+                    <input id="storeMax" type="text" name="max" required/>
+                    <br>
+                    <label>Average cookie sales per customer</label>
+                    <input id="aveCooksPC" type="text" name="acpc" required/>
+                    <br>
+                    <button type="submit" name="storeGenerate">Generate Store</button>
+                </fieldset>
+                </form>
+        </section>
         <main>
             <table id="infoTable"></table>
         </main>
 
         <footer>
         </footer>
-        <script src="js/app.js" type="text/javascript"></script>
+        <script src="js/app2.js" type="text/javascript"></script>
     </body>
 </html>
