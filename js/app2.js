@@ -102,7 +102,7 @@ function toatsCookies(){
 
 
 
-function rendertheFuckingTable(){
+function renderTheTable(){
 // Creates Table Head
   infoTable.innerHTML = '';
 
@@ -200,7 +200,7 @@ new Store('Alki', 23, 56, 6.3);
 // calls a function that stors the length of the longest array in a variable called longestArrayLength
 findLongestArray(listOfStoresArray,'averageCookies');
 toatsCookies();
-rendertheFuckingTable();
+renderTheTable();
 
 
 
@@ -217,7 +217,7 @@ function generateStore(event){
   
   console.log(listOfStoresArray);
   toatsCookies();
-  rendertheFuckingTable();
+  renderTheTable();
   console.log(listOfStoresArray[listOfStoresArray.length - 1]);
 }
 
