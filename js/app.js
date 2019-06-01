@@ -41,8 +41,8 @@ function getEstRndm(store){
 
   //Sums up total of estimated cookies per day and creates a new sum array on each store.
   store.sum = 0;
-  for(var j = 0; j < store.averageCookies.length; j++){
-    store.sum = store.sum + store.averageCookies[j];
+  for(var k = 0; j < store.averageCookies.length; k++){
+    store.sum = store.sum + store.averageCookies[k];
   }
 }
 
